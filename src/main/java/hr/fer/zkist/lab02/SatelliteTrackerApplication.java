@@ -26,6 +26,7 @@ public class SatelliteTrackerApplication implements HttpHandler {
             path = "/index.html";
         }
         path = path.substring(1);
+        String contentType = path.endsWith("html") ? "text/html" : path.endsWith("css") ? "text/css" : "text/javascript";
 
         byte[] response = new byte[]{};
         try {
@@ -40,7 +41,6 @@ public class SatelliteTrackerApplication implements HttpHandler {
             exchange.sendResponseHeaders(503, 0);
         }
 
-        String contentType = path.endsWith("html") ? "text/html" : path.endsWith("css") ? "text/css" : "text/javascript";
         exchange.getResponseHeaders().add("Content-Type", contentType);
         exchange.sendResponseHeaders(200, response.length);
         OutputStream os = exchange.getResponseBody();

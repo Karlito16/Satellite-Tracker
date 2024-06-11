@@ -119,7 +119,7 @@ const initMap = () => {
     setPathOnMap(data.map(record => [record.lat, record.lon]));
 };
 
-const onTrack = () => {
+const onShow = () => {
     const startTime = new Date(document.getElementById("timeStart").value).getTime();
     const endTime = new Date(document.getElementById("timeEnd").value).getTime();
 
